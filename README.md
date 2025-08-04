@@ -107,7 +107,4 @@ Built as a way to stay consistent with my learning and to conquer one bug at a t
 
 ---
 
-```
-
----
 
