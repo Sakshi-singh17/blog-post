@@ -6,6 +6,26 @@ This is not a tutorial site — it’s a **developer diary** where I write about
 
 ---
 
+## 🖼️ Screenshots
+
+### 💻 Home Page
+![Home Page](screenshots/home.png)
+
+### 📝 Blog Page
+![Blog Page](screenshots/blog.png)
+
+### 📝 Blog Preview
+![Blog Preview](screenshots/blog-preview.png)
+
+### 📝 About Page
+![About Page](screenshots/about.png)
+
+### 📝 Contact Page
+![Contact Page](screenshots/contact.png)
+
+---
+
+
 ## ✨ Features
 
 - 🚀 Built with Next.js 14 App Router
@@ -42,24 +62,6 @@ This is not a tutorial site — it’s a **developer diary** where I write about
 
 ```
 
----
-
-## 🖼️ Screenshots
-
-### 💻 Home Page
-![Home Page](screenshots/home.png)
-
-### 📝 Blog Page
-![Blog Page](screenshots/blog.png)
-
-### 📝 Blog Preview
-![Blog Preview](screenshots/blog-preview.png)
-
-### 📝 About Page
-![About Page](screenshots/about.png)
-
-### 📝 Contact Page
-![Contact Page](screenshots/contact.png)
 
 ---
 
@@ -109,11 +111,3 @@ Built as a way to stay consistent with my learning and to conquer one bug at a t
 
 ---
 
-### ✅ To Use This:
-
-1. Copy the content into your `README.md`
-2. Add screenshots into a `screenshots/` folder inside the root directory
-3. Replace the links and email with your actual info
-4. Commit & push!
-
-Would you like me to generate the markdown file and upload it for you as well?
