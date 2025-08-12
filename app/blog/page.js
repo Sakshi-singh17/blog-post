@@ -1,63 +1,55 @@
-// pages/Page.js
-
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
+import BlogCard from '../../components/ui/blogcards';
+import { useBlogs } from '../../components/BlogsContext';
 
 const Page = () => {
+  const { blogs, loading, error } = useBlogs();
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  const blogsToShow = blogs;
+  const [search, setSearch] = useState("");
+  const filteredBlogs = blogsToShow.filter(blog => {
+    const q = search.toLowerCase();
+    return (
+      blog.title.toLowerCase().includes(q) ||
+      blog.description.toLowerCase().includes(q) ||
+      (blog.author && blog.author.toLowerCase().includes(q))
+    );
+  });
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="-my-8 divide-y-2 divide-gray-100">
-          <div className="py-8 flex flex-wrap md:flex-nowrap">
-            <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-              <span className="font-semibold title-font text-gray-700">CATEGORY</span>
-              <span className="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
-            </div>
-            <div className="md:flex-grow">
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Bitters hashtag waistcoat fashion axe chia unicorn</h2>
-              <p className="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-              <a className="text-purple-500 inline-flex items-center mt-4">Learn More
-                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div className="py-8 flex flex-wrap md:flex-nowrap">
-            <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-              <span className="font-semibold title-font text-gray-700">CATEGORY</span>
-              <span className="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
-            </div>
-            <div className="md:flex-grow">
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Meditation bushwick direct trade taxidermy shaman</h2>
-              <p className="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-              <a className="text-purple-500 inline-flex items-center mt-4">Learn More
-                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div className="py-8 flex flex-wrap md:flex-nowrap">
-            <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-              <span className="font-semibold title-font text-gray-700">CATEGORY</span>
-              <span className="text-sm text-gray-500">12 Jun 2019</span>
-            </div>
-            <div className="md:flex-grow">
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Woke master cleanse drinking vinegar salvia</h2>
-              <p className="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-              <a className="text-purple-500 inline-flex items-center mt-4">Learn More
-                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
+    <div className="relative min-h-screen w-full transition-colors duration-500">
+      <div className="max-w-5xl mx-auto px-4 pt-20 pb-8 flex flex-col items-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-black dark:text-white mb-2 drop-shadow-lg">Latest Blogs</h1>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">Explore insightful articles, coding journeys, and tech tips. Dive into the latest posts from Sakshi's world of software development.</p>
+        {/* Search Bar */}
+        <div className="flex w-full max-w-xl mb-10 gap-2">
+          <input
+            type="text"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search blogs, topics, or authors..."
+            className="flex-1 rounded-l-lg bg-gray-100 dark:bg-[#232946] border border-gray-300 dark:border-gray-700 px-4 py-2 text-base text-gray-700 dark:text-white focus:ring-2 focus:ring-purple-400 outline-none transition-colors duration-200"
+          />
+          <button
+            className="rounded-r-lg bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 transition-colors duration-200"
+            onClick={() => setSearch("")}
+          >Clear</button>
+        </div>
+        <div className="w-full flex flex-wrap -m-4 justify-center">
+          {filteredBlogs.length > 0 ? (
+            filteredBlogs.map((blog) => (
+              <BlogCard key={blog.slug} {...blog} />
+            ))
+          ) : (
+            <p className="text-center text-gray-500 dark:text-gray-400 w-full py-12 text-lg">No blogs found.</p>
+          )}
         </div>
       </div>
-    </section>
+      {/* Subtle glow at the bottom for dark mode */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-0 w-3/4 h-32 bg-[#7C3AED]/15 blur-3xl rounded-full dark:block hidden" />
+    </div>
   );
 };
 
