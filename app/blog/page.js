@@ -5,11 +5,12 @@ import { useBlogs } from '../../components/BlogsContext';
 
 const Page = () => {
   const { blogs, loading, error } = useBlogs();
+  const [search, setSearch] = useState("");
+  
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   const blogsToShow = blogs;
-  const [search, setSearch] = useState("");
   const filteredBlogs = blogsToShow.filter(blog => {
     const q = search.toLowerCase();
     return (
@@ -22,7 +23,7 @@ const Page = () => {
     <div className="relative min-h-screen w-full transition-colors duration-500">
       <div className="max-w-5xl mx-auto px-4 pt-20 pb-8 flex flex-col items-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center text-black dark:text-white mb-2 drop-shadow-lg">Latest Blogs</h1>
-        <p className="text-lg text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">Explore insightful articles, coding journeys, and tech tips. Dive into the latest posts from Sakshi's world of software development.</p>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">Explore insightful articles, coding journeys, and tech tips. Dive into the latest posts from Sakshi&apos;s world of software development.</p>
         {/* Search Bar */}
         <div className="flex w-full max-w-xl mb-10 gap-2">
           <input

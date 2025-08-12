@@ -71,7 +71,7 @@ export const TypewriterEffect = ({
     if (isInView) {
       startAnimation();
     }
-  }, [isInView]);
+  }, [isInView, startAnimation]);
 
   useEffect(() => {
     if (isInView && loop && !isAnimating) {
@@ -81,7 +81,7 @@ export const TypewriterEffect = ({
       
       return () => clearTimeout(timer);
     }
-  }, [isInView, loop, isAnimating, loopDelay]);
+  }, [isInView, loop, isAnimating, loopDelay, startAnimation]);
 
   const renderWords = () => {
     return (

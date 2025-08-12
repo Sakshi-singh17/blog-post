@@ -1,6 +1,7 @@
 // app/blogpost/[slug]/page.js
 "use client";
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import rehypeFormat from 'rehype-format';
@@ -54,7 +55,7 @@ export default function BlogPostPage({ params }) {
     } else {
       console.log('No blog content found:', blog);
     }
-  }, [blog?.content, processor]);
+  }, [blog, processor]);
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error: {error}</div>;
@@ -76,9 +77,11 @@ export default function BlogPostPage({ params }) {
         </div>
         {blog.image && (
           <div className="mb-6">
-            <img 
+            <Image 
               src={`/${blog.image}`} 
               alt={blog.title} 
+              width={800}
+              height={400}
               className="w-full h-auto rounded-lg"
             />
           </div>

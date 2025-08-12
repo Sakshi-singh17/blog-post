@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Image from 'next/image';
 import { WavyBackground } from "../../components/ui/wavy-background";
 
 const About = () => {
@@ -8,15 +9,17 @@ const About = () => {
       {/* Hero Section */}
       <WavyBackground containerClassName="min-h-[40vh] flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center text-gray-300">
-          <img
+          <Image
             src="/logo.jpg"
             alt="Profile"
+            width={144}
+            height={144}
             className="w-36 h-36 rounded-full border-4 border-primary shadow-xl mb-6 bg-white justify-center items-center text-center"
           />
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 drop-shadow-lg text-center">Hi, I'm Sakshi</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 drop-shadow-lg text-center">Hi, I&apos;m Sakshi</h1>
           <p className="text-lg md:text-2xl font-medium mb-4 drop-shadow text-center">From Java and Spring Boot to Next.js and Firebase, I build, break, and blog it all.</p>
           <blockquote className="italic text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-6 border-l-4 border-primary pl-4 text-center md:text-left">
-            "Turning ideas into interactive experiences, one line of code at a time."
+            &ldquo;Turning ideas into interactive experiences, one line of code at a time.&rdquo;
           </blockquote>
           <button
             onClick={() => window.open("https://www.linkedin.com/in/sakshi-amit-singh/", "_blank")}
@@ -24,7 +27,7 @@ const About = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
             <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
-              Let's Connect
+              Let&apos;s Connect
             </div>
           </button>
         </div>
@@ -33,9 +36,11 @@ const About = () => {
       <div className="pt-5 pb-15 max-w-screen mx-auto px-4 sm:px-6 lg:px-8 relative z-10 dark:bg-gradient-to-b dark:from-[#181A2A] dark:via-[#1a1833] dark:to-[#232946] justify-center items-center rounded-xl overflow-hidden">
         {/* Profile Section (kept for avatar and name on small screens) */}
         <div className="flex flex-col items-center text-center mb-10 md:hidden pt-8">
-          <img
+          <Image
             src="https://ui-avatars.com/api/?name=Sakshi&background=6D28D9&color=fff&size=128"
             alt="Profile"
+            width={128}
+            height={128}
             className="w-32 h-32 rounded-full shadow-lg mb-4"
           />
           <h1 className="text-3xl font-bold text-foreground mb-2">Sakshi</h1>
@@ -46,7 +51,7 @@ const About = () => {
         <section className="max-w-5xl mx-auto mb-8 rounded-xl shadow p-6 pt-5 border-2 border-[#645CBB] shadow-xl/50 shadow-black/50">
           <h2 className="text-2xl font-semibold text-primary mb-2 justify-center items-center">About Me</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Hey! I’m Sakshi, a Computer Engineering graduate with a strong focus on backend development, full-stack web apps, and AI-integrated solutions. I enjoy working with Java, Spring Boot, Firebase, and Next.js, and I like building things that solve real problems. This blog is where I document my coding journey, debug sessions, architecture thoughts, and project experiments, no tutorials, just honest tech insights and what I learned while building stuff.
+            Hey! I&apos;m Sakshi, a Computer Engineering graduate with a strong focus on backend development, full-stack web apps, and AI-integrated solutions. I enjoy working with Java, Spring Boot, Firebase, and Next.js, and I like building things that solve real problems. This blog is where I document my coding journey, debug sessions, architecture thoughts, and project experiments, no tutorials, just honest tech insights and what I learned while building stuff.
           </p>
 
         </section>
