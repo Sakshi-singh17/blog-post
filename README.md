@@ -1,5 +1,7 @@
 # 🧠 Code. Conquer. Learn.
 
+🔗 **Live Website:** [Visit Here](https://blog-post-9isz-h6952ck76-sakshi-singh17s-projects.vercel.app/blog)
+
 A personal blog website built with **Next.js**, **Tailwind CSS**, **ShadCN UI**, and **Acertainty UI** where I document my journey through **Data Structures & Algorithms**, **debugging**, **tech learnings**, and **project-building experiences**.
 
 This is not a tutorial site — it’s a **developer diary** where I write about what I learned, how I debugged, and how I grew.
